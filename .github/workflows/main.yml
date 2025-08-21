@@ -22,7 +22,11 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: ap-south-1   # Change to your region
 
-      # 3. Sync files to S3
+      # 3. Sync files to S3 (ignores GitHub workflow files)
       - name: Deploy to S3
         run: |
-          aws s3 sync ./ s3://devopswithlalaji.in.net --delete
+          aws s3 sync ./ s3://devopswithlalaji.in.net \
+            --delete \
+            --exclude ".git/*" \
+            --exclude ".github/*" \
+            --exclude "*.md"
