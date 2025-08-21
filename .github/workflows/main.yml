@@ -25,4 +25,4 @@ jobs:
       # 3. Sync files to S3
       - name: Deploy to S3
         run: |
-          aws s3 sync ./ s3://lalaji-static-site --delete
+          aws s3 sync ./ s3://devopswithlalaji.in.net --delete
